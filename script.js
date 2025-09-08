@@ -11,12 +11,11 @@ const konstanta = "ini adalah konstanta";
 const angka = 10;
 
 let kali = angka * angka;
-// console.log(kali); 
+// console.log(kali);
 
 if (angka > 5) {
   console.log("angka lebih besar dari 5");
-}
-else {
+} else {
   console.log("angka lebih kecil dari 5");
 }
 
@@ -43,9 +42,24 @@ const array = ["satu", "dua", "tiga", "empat", "lima"];
 // console.log(array);
 
 // ini menghapus data di array
-array.pop('dua');
+array.pop("dua");
 // array.pop();
 
 // ini menyimpan data baru di array
 array.push("enam");
 console.log(array[2]);
+
+// DOM Document Object Model
+// document.getElementById("id");
+// document.getElementsByClassName("class");
+// document.getElementsByTagName("tag");
+
+// mengubah isi html
+// document.getElementById("id").innerHTML = "ini baru";
+const judul = document.getElementById("judul");
+judul.innerHTML = "ini baru";
+
+// menambahkan elemen
+const p = document.createElement("p");
+p.innerHTML = "ini baru";
+document.body.appendChild(p);

@@ -1,0 +1,15 @@
+<p>ini adalah paragraf</p>
+input text: <input type="input" id="name" />
+<button type="button" onclick="validation()">tombol</button>
+<script>
+  function validation() {
+    let name = document.getElementById("name").value;
+    if (name == "") {
+      alert("Name tidak boleh kosong");
+      return false;
+    }
+    // ini akan muncul ketika tombol di klik
+    alert(name);
+    return true;
+  }
+</script>
