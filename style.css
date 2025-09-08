@@ -10,7 +10,7 @@ table {
 }
 td,
 th {
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   padding: 10px;
   text-align: center;
   vertical-align: middle;
@@ -33,4 +33,18 @@ th {
   align-items: center;
   justify-content: center;
   height: 200px;
+}
+
+
+.btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
