@@ -11,35 +11,62 @@ body {
   padding: 20px;
 }
 
-.navbar {
+.fluid {
+  width: 90%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  background-color: #4CAF50;
-  color: white;
+  justify-self: center;
   padding: 10px;
+}
+
+.navbar {
+  background-color: #4caf50;
+  color: white;
 }
 
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  text-align: center;
   gap: 20px;
 }
 
 .about,
 .portfolio {
+  width: 100%;
   display: grid;
+  grid-template-rows: auto auto auto;
   justify-content: center;
   text-align: center;
   gap: 10px;
 }
 
-.about-grid,
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+}
+
+.about-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.about-item,
+.portfolio-item {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.about-item p, .portfolio-item q {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4caf50;
 }
 
 .gray-box {
@@ -50,8 +77,16 @@ body {
   height: 200px;
 }
 
+.box-gray {
+  /* background: #ccc; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+}
+
 .btn {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   border: none;
   color: white;
   padding: 10px 20px;
