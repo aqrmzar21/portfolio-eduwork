@@ -1,21 +1,22 @@
-<?php 
-$nilai = 40;
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Tambah Produk</title>
+</head>
+<body>
+  <h2>Tambah Produk Baru</h2>
+  <form action="proses.php" method="POST">
+    <label>Nama Produk:</label><br>
+    <input type="text" name="nama"><br><br>
 
-if ($nilai >= 80) {
-  echo "A";
-} elseif ($nilai >= 70) {
-  echo "B";
-} elseif ($nilai >= 60) {
-  echo "C";
-} elseif ($nilai >= 50) {
-  echo "D";
-} else {
-  echo "E";
-}
+    <label>Harga:</label><br>
+    <input type="number" name="harga"><br><br>
 
-// short ternary
-$nilai = 90;
-// maka akan di eksekusi $nilai >= 80
-echo $nilai >= 80 ? "A" : ($nilai >= 70 ? "B" : ($nilai >= 60 ? "C" : ($nilai >= 50 ? "D" : "E")));
+    <label>Deskripsi:</label><br>
+    <textarea name="deskripsi"></textarea><br><br>
 
-?>
+    <button type="submit">Simpan Produk</button>
+  </form>
+</body>
+</html>
