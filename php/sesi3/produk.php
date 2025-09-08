@@ -17,23 +17,23 @@
 
   <!-- Filter Produk -->
   <div class="text-center mb-4">
-    <a href="index.php" class="btn btn-primary me-2">Semua</a>
-    <a href="index.php?kategori=elektronik" class="btn btn-outline-primary me-2">Elektronik</a>
-    <a href="index.php?kategori=fashion" class="btn btn-outline-primary me-2">Fashion</a>
-    <a href="index.php?kategori=aksesoris" class="btn btn-outline-primary">Aksesoris</a>
+    <a href="produk.php" class="btn btn-primary me-2">Semua</a>
+    <a href="produk.php?kategori=elektronik" class="btn btn-outline-primary me-2">Elektronik</a>
+    <a href="produk.php?kategori=fashion" class="btn btn-outline-primary me-2">Fashion</a>
+    <a href="produk.php?kategori=aksesoris" class="btn btn-outline-primary">Aksesoris</a>
   </div>
 
   <div class="row g-4">
     <?php
-    // Cek apakah ada filter kategori
-    if (isset($_GET['kategori'])) {
-        $kategori = $_GET['kategori'];
-        $sql = "SELECT * FROM products WHERE kategori='$kategori'";
-    } else {
-        $sql = "SELECT * FROM products";
-    }
 
-    $result = $koneksi->query($sql);
+// Filter kategori jika ada
+if (isset($_GET['kategori']) && $_GET['kategori'] != '') {
+    $kategori = strtolower($_GET['kategori']); 
+    $sql = "SELECT * FROM products WHERE LOWER(kategori) = '$kategori'";
+} else {
+    $sql = "SELECT * FROM products";
+}
+$result = $koneksi->query($sql);
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -45,6 +45,7 @@
                   <h5 class='card-title'>{$row['nama_produk']}</h5>
                   <p class='card-text'>{$row['deskripsi']}</p>
                   <p class='fw-bold text-primary'>Rp " . number_format($row['harga'], 0, ',', '.') . "</p>
+                  <span class='badge bg-secondary mb-2'>{$row['kategori']}</span><br>
                   <button class='btn btn-success'>Beli</button>
                 </div>
               </div>
@@ -55,6 +56,11 @@
         echo "<p class='text-center text-danger'>Produk tidak ditemukan.</p>";
     }
     ?>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <a href="form.php" class="btn btn-primary float-end mt-2">Tambah Data</a>
   </div>
 </div>
 
