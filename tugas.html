@@ -1,77 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eduwork | Pemograman Dasar</title>
-    <link rel="stylesheet" href="style.css" />
-   
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eduwork | Pemograman Dasar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    
     <!-- Navbar -->
-    <table>
-      <tr>
-        <td align="left">Brand</td>
-        <td align="right">Header | Biodata | Portofolio</td>
-      </tr>
-    </table>
+    <div class="navbar">
+      <div>Brand</div>
+      <div style="text-align: right;">Header | Biodata | Portofolio</div>
+    </div>
 
     <!-- Header -->
-    <table>
-      <tr>
-        <td width="50%">
-          <h2>Selamat Datang di Website Saya</h2>
-          <p>Ini adalah contoh header dengan dua kolom. Kolom kiri berisi teks seperti ini.</p>
-          <button class="btn">Pelajari Lebih Lanjut</button>
-        </td>
-        <td width="50%">
-          <div class="gray-box" style="height: 400px">600 x 400</div>
-        </td>
-      </tr>
-    </table>
+    <div class="header">
+      <div>
+        <h2>Selamat Datang di Website Saya</h2>
+        <p>Ini adalah contoh header dengan dua kolom. Kolom kiri berisi teks seperti ini.</p>
+        <button class="btn">Pelajari Lebih Lanjut</button>
+      </div>
+      <div class="gray-box" style="height: 400px;">600 x 400</div>
+    </div>
 
     <!-- About Me -->
-    <table>
-      <tr>
-        <td colspan="3" class="about-title">About Me</td>
-      </tr>
-      <tr>
-        <td colspan="3"><i>A brief introduction about myself</i></td>
-      </tr>
-      <tr>
-        <td>Full Name</td>
-        <td>Education</td>
-        <td>Pekerjaan</td>
-      </tr>
-      <tr>
-        <td>Contact</td>
-        <td>Hobi</td>
-        <td>Alamat</td>
-      </tr>
-    </table>
+    <div class="about">
+      <div class="about-title">About Me</div>
+      <i>A brief introduction about myself</i>
+      <div class="about-grid">
+        <div class="about-item">
+            <p>
+                Full Name
+            </p>
+            <span>Abdul</span>
+        </div>
+        <div class="about-item">
+            <p>
+                Education
+            </p>
+            <span>Abdul</span>
+        </div>
+        <div class="about-item">
+            <p>
+                Pekerjaan
+            </p>
+            <span>Abdul</span>
+        </div>
+        <div class="about-item">
+            <p>
+                Contact
+            </p>
+            <span>Abdul</span>
+        </div>
+        <div class="about-item">
+            <p>
+                Hobi
+            </p>
+            <span>Abdul</span>
+        </div>
+        <div class="about-item">
+            <p>
+                Alamat
+            </p>
+            <span>Abdul</span>
+        </div>
+      </div>
+    </div>
 
     <!-- Portfolio -->
-    <table>
-      <tr>
-        <td colspan="3" class="portfolio-title">Portofolio</td>
-      </tr>
-      <tr>
-        <td>
+    <div class="portfolio">
+      <div class="portfolio-title">Portofolio</div>
+      <div class="portfolio-grid">
+        <div>
           <div class="gray-box">350 x 200</div>
           <b>Proyek 1</b><br />
           Deskripsi proyek 1.
-        </td>
-        <td>
+        </div>
+        <div>
           <div class="gray-box">350 x 200</div>
           <b>Proyek 2</b><br />
           Deskripsi proyek 2.
-        </td>
-        <td>
+        </div>
+        <div>
           <div class="gray-box">350 x 200</div>
           <b>Proyek 3</b><br />
           Deskripsi proyek 3.
-        </td>
-      </tr>
-    </table>
-  </body>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
 </html>
