@@ -46,7 +46,6 @@ $result = $koneksi->query($sql);
                   <p class='card-text'>{$row['deskripsi']}</p>
                   <p class='fw-bold text-primary'>Rp " . number_format($row['harga'], 0, ',', '.') . "</p>
                   <span class='badge bg-secondary mb-2'>{$row['kategori']}</span><br>
-                  <button class='btn btn-success'>Beli</button>
                 </div>
               </div>
             </div>
