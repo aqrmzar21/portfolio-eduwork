@@ -1,6 +1,6 @@
 <?php
 // Koneksi ke database
-$koneksi = new mysqli("localhost", "root", "", "ecommerce_db");
+$koneksi = new mysqli("localhost", "root", "", "ecommerce");
 
 // Cek koneksi
 if ($koneksi->connect_error) {
@@ -11,6 +11,7 @@ if ($koneksi->connect_error) {
 $nama = $_POST['nama'];
 $harga = $_POST['harga'];
 $deskripsi = $_POST['deskripsi'];
+$stok = $_POST['stok'];
 
 // Validasi sederhana
 if (empty($nama) || empty($harga) || empty($deskripsi)) {
@@ -18,11 +19,11 @@ if (empty($nama) || empty($harga) || empty($deskripsi)) {
 } else {
     // Query simpan ke database
     $sql = "INSERT INTO products (nama_produk, harga, deskripsi, stok) 
-            VALUES ('$nama', '$harga', '$deskripsi', 0)";
+            VALUES ('$nama', '$harga', '$deskripsi', '$stok')";
     
     if ($koneksi->query($sql) === TRUE) {
         echo "✅ Produk berhasil ditambahkan!";
-        echo "<br><a href='form_produk.php'>Tambah produk lagi</a>";
+        echo "<br><a href='index.php'>Tambah produk lagi</a>";
     } else {
         echo "Error: " . $koneksi->error;
     }
