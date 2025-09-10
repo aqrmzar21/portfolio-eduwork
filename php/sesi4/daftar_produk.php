@@ -115,10 +115,11 @@
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
+                  $no = 1; // Untuk penomoran nomor urut
                     // Menampilkan data setiap baris
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . $row["id"] . "</td>";
+                        echo "<td>" . $no . "</td>";
                         echo "<td>" . htmlspecialchars($row["nama_produk"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row["deskripsi"]) . "</td>";
                         echo "<td>Rp " . number_format($row["harga"], 2, ',', '.') . "</td>"; // Format Rupiah
@@ -137,6 +138,7 @@
                         echo '<a href="hapus_produk.php?id=' . $row["id"] . '" onclick="return confirm(\'Yakin ingin menghapus produk ini?\')"><i class="bi bi-trash">Hapus</i></a>'; // Link hapus (belum dibuat)
                         echo '</td>';
                         echo "</tr>";
+                        $no++;
                     }
                 } else {
                     echo "<tr><td colspan='7'>Belum ada produk.</td></tr>";
