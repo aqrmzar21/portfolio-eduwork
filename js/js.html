@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Produk</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .product-card {
+      transition: transform 0.3s;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+  <h2 class="text-center mb-4">Daftar Produk</h2>
+
+  <!-- Filter -->
+  <div class="text-center mb-4">
+    <button class="btn btn-primary me-2" onclick="filterProducts('all')">Semua</button>
+    <button class="btn btn-outline-primary me-2" onclick="filterProducts('elektronik')">Elektronik</button>
+    <button class="btn btn-outline-primary me-2" onclick="filterProducts('fashion')">Fashion</button>
+    <button class="btn btn-outline-primary" onclick="filterProducts('aksesoris')">Aksesoris</button>
+  </div>
+
+  <!-- Tempat menampilkan produk -->
+  <div id="product-list" class="row g-4"></div>
+</div>
+
+<script>
+  // 1. Data Produk
+  const products = [
+    {
+      nama: "Laptop Asus ROG",
+      harga: 18000000,
+      deskripsi: "Laptop gaming dengan performa tinggi.",
+      gambar: "https://picsum.photos/300/200?random=1",
+      kategori: "elektronik"
+    },
+    {
+      nama: "Kaos Polos",
+      harga: 75000,
+      deskripsi: "Kaos nyaman untuk sehari-hari.",
+      gambar: "https://picsum.photos/300/200?random=2",
+      kategori: "fashion"
+    },
+    {
+      nama: "Headset Bluetooth",
+      harga: 350000,
+      deskripsi: "Headset wireless dengan suara jernih.",
+      gambar: "https://picsum.photos/300/200?random=3",
+      kategori: "aksesoris"
+    },
+    {
+      nama: "Sneakers Nike",
+      harga: 1200000,
+      deskripsi: "Sepatu sporty untuk aktivitas harian.",
+      gambar: "https://picsum.photos/300/200?random=4",
+      kategori: "fashion"
+    },
+    {
+      nama: "Smartphone Samsung",
+      harga: 7500000,
+      deskripsi: "HP canggih dengan kamera berkualitas.",
+      gambar: "https://picsum.photos/300/200?random=5",
+      kategori: "elektronik"
+    }
+  ];
+
+  const productList = document.getElementById("product-list");
+
+  // 2. Fungsi untuk menampilkan produk
+  function displayProducts(filteredProducts) {
+    productList.innerHTML = ""; // kosongkan dulu
+    filteredProducts.forEach(product => {
+      productList.innerHTML += `
+        <div class="col-md-4">
+          <div class="card product-card shadow-sm">
+            <img src="${product.gambar}" class="card-img-top" alt="${product.nama}">
+            <div class="card-body">
+              <h5 class="card-title">${product.nama}</h5>
+              <p class="card-text">${product.deskripsi}</p>
+              <p class="fw-bold text-primary">Rp ${product.harga.toLocaleString()}</p>
+              <button class="btn btn-success">Beli</button>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  // 3. Fungsi filter produk
+  function filterProducts(category) {
+    if (category === "all") {
+      displayProducts(products);
+    } else {
+      const filtered = products.filter(p => p.kategori === category);
+      displayProducts(filtered);
+    }
+  }
+
+  // Tampilkan semua produk pertama kali
+  displayProducts(products);
+</script>
+
+</body>
+</html>
