@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Produk</title>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Link Icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -88,6 +92,7 @@
 </head>
 <body>
     <div class="container">
+        <a href="daftar_produk.php" class="add-button"><i class="bi bi-arrow-left"></i></a>
         <h1>Tambah Produk</h1>
         <form action="proses_tambah_produk.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">

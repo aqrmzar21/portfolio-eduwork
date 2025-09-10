@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Cek jika file sudah ada
+    
     if (file_exists($target_file)) {
         echo "Maaf, file sudah ada.";
         $uploadOk = 0;
@@ -72,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Untuk produk, kita hanya menyimpan nama filenya saja di kolom 'gambar' jika Anda punya kolom tersebut.
             // Jika di database Anda tidak ada kolom gambar, Anda perlu menambahkannya di tabel 'products'.
             // Asumsikan ada kolom 'gambar' di tabel products.
-            $sql = "INSERT INTO products (nama_produk, harga, deskripsi, stok, gambar)
+            $sql = "INSERT INTO product (nama_produk, harga, deskripsi, stok, gambar)
                     VALUES (?, ?, ?, ?, ?)"; // Sesuaikan dengan struktur tabel Anda
 
             $stmt = $conn->prepare($sql);

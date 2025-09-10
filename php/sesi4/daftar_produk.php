@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Produk</title>
+    <!-- link icon  -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -109,7 +111,7 @@
                 }
 
                 // Mengambil data produk dari database
-                $sql = "SELECT * FROM products";
+                $sql = "SELECT * FROM product";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -131,8 +133,8 @@
                         }
                         echo "</td>";
                         echo '<td class="action-buttons">';
-                        echo '<a href="edit_produk.php?id=' . $row["id"] . '">Edit</a>'; // Link edit (belum dibuat)
-                        echo '<a href="hapus_produk.php?id=' . $row["id"] . '" onclick="return confirm(\'Yakin ingin menghapus produk ini?\')">Hapus</a>'; // Link hapus (belum dibuat)
+                        echo '<a href="edit_produk.php?id=' . $row["id"] . '"><i class="bi bi-pencil">Edit</i></a>'; // Link edit (belum dibuat)
+                        echo '<a href="hapus_produk.php?id=' . $row["id"] . '" onclick="return confirm(\'Yakin ingin menghapus produk ini?\')"><i class="bi bi-trash">Hapus</i></a>'; // Link hapus (belum dibuat)
                         echo '</td>';
                         echo "</tr>";
                     }
