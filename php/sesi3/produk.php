@@ -40,7 +40,6 @@ $result = $koneksi->query($sql);
             echo "
             <div class='col-md-4'>
               <div class='card product-card shadow-sm'>
-                <img src='https://picsum.photos/400/250?random={$row['id']}' class='card-img-top'>
                 <div class='card-body'>
                   <h5 class='card-title'>{$row['nama_produk']}</h5>
                   <p class='card-text'>{$row['deskripsi']}</p>
