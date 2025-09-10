@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Produk</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #f4f7f6;
             display: flex;
             justify-content: center;
@@ -15,10 +15,10 @@
             margin: 0;
         }
         .container {
-            background-color: #fff;
+            background-color: #ffffff;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 500px;
             border: 1px solid #e0e0e0;
@@ -26,7 +26,7 @@
         h1 {
             text-align: center;
             color: #333;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         .form-group {
             margin-bottom: 20px;
@@ -34,95 +34,95 @@
         label {
             display: block;
             margin-bottom: 8px;
-            color: #555;
             font-weight: bold;
+            color: #555;
         }
         input[type="text"],
         textarea,
-        input[type="number"] {
+        input[type="number"],
+        input[type="file"] {
             width: 100%;
-            padding: 12px 15px;
+            padding: 12px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 4px;
+            box-sizing: border-box; /* Penting untuk padding dan border tidak menambah lebar */
             font-size: 16px;
-            box-sizing: border-box; /* Penting untuk padding dan border */
         }
         textarea {
-            resize: vertical; /* Memungkinkan perubahan ukuran vertikal */
             min-height: 100px;
-        }
-        .button-container {
-            text-align: center;
-            margin-top: 30px;
+            resize: vertical;
         }
         button {
-            background-color: #28a745;
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745; /* Warna hijau */
             color: white;
-            padding: 12px 25px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             font-size: 18px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            width: 100%;
-            font-weight: bold;
         }
         button:hover {
             background-color: #218838;
         }
-        .message {
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            width: 100%;
             text-align: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            border-radius: 5px;
         }
-        .success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+        .custom-file-upload:hover {
+            background-color: #e2e6ea;
         }
-        .error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+        .file-name {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Tambah Produk</h1>
-
-        <?php
-        // Handle pesan sukses atau error dari proses sebelumnya
-        if (isset($_GET['status'])) {
-            if ($_GET['status'] == 'success') {
-                echo '<div class="message success">Produk berhasil ditambahkan!</div>';
-            } elseif ($_GET['status'] == 'error') {
-                echo '<div class="message error">Gagal menambahkan produk. Silakan coba lagi.</div>';
-            }
-        }
-        ?>
-
-        <form action="proses_tambah_produk.php" method="POST">
+        <form action="proses_tambah_produk.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nama_produk">Nama Produk:</label>
                 <input type="text" id="nama_produk" name="nama_produk" required>
             </div>
-
             <div class="form-group">
                 <label for="deskripsi_produk">Deskripsi Produk:</label>
                 <textarea id="deskripsi_produk" name="deskripsi_produk" required></textarea>
             </div>
-
             <div class="form-group">
                 <label for="harga_produk">Harga Produk:</label>
                 <input type="number" id="harga_produk" name="harga_produk" step="0.01" required>
             </div>
-
-            <div class="button-container">
-                <button type="submit">Tambah Produk</button>
+            <div class="form-group">
+                <label for="gambar_produk">Upload Gambar:</label>
+                <label for="gambar_produk" class="custom-file-upload">
+                    Pilih File
+                </label>
+                <input type="file" id="gambar_produk" name="gambar_produk" style="display: none;" onchange="updateFileName(this)">
+                <div id="file-name-display" class="file-name">Belum ada file yang dipilih</div>
             </div>
+            <button type="submit">Tambah Produk</button>
         </form>
     </div>
+
+    <script>
+        function updateFileName(input) {
+            const fileNameDisplay = document.getElementById('file-name-display');
+            if (input.files.length > 0) {
+                fileNameDisplay.textContent = input.files[0].name;
+            } else {
+                fileNameDisplay.textContent = 'Belum ada file yang dipilih';
+            }
+        }
+    </script>
 </body>
 </html>
