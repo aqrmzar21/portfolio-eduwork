@@ -12,25 +12,24 @@ if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['id'];
-    $nama_produk = $_POST['nama_produk'];
-    $deskripsi = $_POST['deskripsi'];
-    $harga = $_POST['harga'];
-    $stok = $_POST['stok'];
+// Ambil ID dari parameter URL
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 
     // Menggunakan prepared statement untuk keamanan
-    $sql = "UPDATE product SET nama_produk = ?, deskripsi = ?, harga = ?, stok = ? WHERE id = ?";
+    $sql = "DELETE FROM product WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssddi", $nama_produk, $deskripsi, $harga, $stok, $id);
+    $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        echo "Produk berhasil diperbarui.";
+        echo "Produk berhasil dihapus.";
     } else {
         echo "Error: " . $stmt->error;
     }
 
     $stmt->close();
+} else {
+    echo "ID produk tidak ditemukan.";
 }
 
 $conn->close();
