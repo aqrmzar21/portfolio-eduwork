@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Ambil semua data produk
-$sql = "SELECT id, nama_produk, harga, deskripsi, stok, gambar FROM product";
+$sql = "SELECT * FROM product";
 $result = $conn->query($sql);
 ?>
 
