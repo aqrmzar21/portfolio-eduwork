@@ -16,9 +16,10 @@ if ($conn->connect_error) {
 // Memproses data dari form
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama_produk = $_POST['nama_produk'];
-    $deskripsi_produk = $_POST['deskripsi_produk'];
     $harga_produk = $_POST['harga_produk'];
-    $stok = 0; // Stok bisa diatur manual atau ditambahkan di form lain
+    $deskripsi_produk = $_POST['deskripsi_produk'];
+    $stok = $_POST['stok'];
+    // $stok = 0; // Stok bisa diatur manual atau ditambahkan di form lain
 
     // Menangani upload gambar
     $target_dir = "uploads/"; // Direktori untuk menyimpan gambar
@@ -31,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageFileType = strtolower(pathinfo($_FILES["gambar_produk"]["name"], PATHINFO_EXTENSION));
 
     // Buat nama file baru yang unik
-    $nama_file_gambar = uniqid('img_', true) . '.' . $imageFileType;
+    $nama_file_gambar =unqid() . '.' . $imageFileType;
     $target_file = $target_dir . $nama_file_gambar;
 
     $uploadOk = 1;
@@ -61,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Izinkan format file tertentu
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" ) {
+    && $imageFileType != "gif" && $imageFileType != "webp") {
         echo "Maaf, hanya format JPG, JPEG, PNG & GIF yang diizinkan.";
         $uploadOk = 0;
     }
@@ -82,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     VALUES (?, ?, ?, ?, ?)"; // Sesuaikan dengan struktur tabel Anda
 
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sdiss", $nama_produk, $harga_produk, $deskripsi_produk, $stok, $nama_file_gambar); // 's' for string, 'd' for decimal/double, 'i' for integer
+            $stmt->bind_param("sisis", $nama_produk, $harga_produk, $deskripsi_produk, $stok, $nama_file_gambar); // 's' for string, 'd' for decimal/double, 'i' for integer
 
             if ($stmt->execute()) {
                 echo "Produk berhasil ditambahkan!";

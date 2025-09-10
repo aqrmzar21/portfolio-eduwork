@@ -100,12 +100,16 @@
                 <input type="text" id="nama_produk" name="nama_produk" required>
             </div>
             <div class="form-group">
+                <label for="harga_produk">Harga Produk:</label>
+                <input type="number" id="harga_produk" name="harga_produk" step="0.01" required>
+            </div>
+            <div class="form-group">
                 <label for="deskripsi_produk">Deskripsi Produk:</label>
                 <textarea id="deskripsi_produk" name="deskripsi_produk" required></textarea>
             </div>
             <div class="form-group">
-                <label for="harga_produk">Harga Produk:</label>
-                <input type="number" id="harga_produk" name="harga_produk" step="0.01" required>
+                <label for="stok">Stok Produk:</label>
+                <input type="number" id="stok" name="stok" required>
             </div>
             <div class="form-group">
                 <label for="gambar_produk">Upload Gambar:</label>
