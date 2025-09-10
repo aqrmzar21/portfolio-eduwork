@@ -27,8 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mkdir($target_dir, 0777, true); // Membuat direktori jika belum ada
     }
 
-    $nama_file_gambar = basename($_FILES["gambar_produk"]["name"]);
+   // Ambil ekstensi file
+    $imageFileType = strtolower(pathinfo($_FILES["gambar_produk"]["name"], PATHINFO_EXTENSION));
+
+    // Buat nama file baru yang unik
+    $nama_file_gambar = uniqid('img_', true) . '.' . $imageFileType;
     $target_file = $target_dir . $nama_file_gambar;
+
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
@@ -42,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Cek jika file sudah ada
-    
+    // ganti dengan merubah nama dengan random math agar tidak ada file yang sama ketika di upload
     if (file_exists($target_file)) {
         echo "Maaf, file sudah ada.";
         $uploadOk = 0;
