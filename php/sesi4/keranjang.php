@@ -23,37 +23,41 @@ session_start();
 
     if (isset($_SESSION['keranjang']) && !empty($_SESSION['keranjang'])):
         $total_harga = 0;
-        ?>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Nama Produk</th>
-                    <th>Harga</th>
-                    <th>Jumlah</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($_SESSION['keranjang'] as $item):
-                    $subtotal = $item['harga'] * $item['quantity'];
-                    $total_harga += $subtotal;
-                ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($item['nama']); ?></td>
-                    <td>Rp<?php echo number_format($item['harga'], 0, ',', '.'); ?></td>
-                    <td><?php echo $item['quantity']; ?></td>
-                    <td>Rp<?php echo number_format($subtotal, 0, ',', '.'); ?></td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3" class="text-end fw-bold">Total</td>
-                    <td class="fw-bold">Rp<?php echo number_format($total_harga, 0, ',', '.'); ?></td>
-                </tr>
-            </tfoot>
-        </table>
-        <?php else: ?>
+    ?>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nama Produk</th>
+                <th>Harga</th>
+                <th>Jumlah</th>
+                <th>Subtotal</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($_SESSION['keranjang'] as $item):
+                $subtotal = $item['harga'] * $item['quantity'];
+                $total_harga += $subtotal;
+            ?>
+            <tr>
+                <td><?php echo htmlspecialchars($item['nama']); ?></td>
+                <td>Rp<?php echo number_format($item['harga'], 0, ',', '.'); ?></td>
+                <td><?php echo $item['quantity']; ?></td>
+                <td>Rp<?php echo number_format($subtotal, 0, ',', '.'); ?></td>
+                <td>
+                    <a href="hapus_keranjang.php?id=<?php echo $item['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus item ini?')">Hapus</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="text-end fw-bold">Total</td>
+                <td class="fw-bold">Rp<?php echo number_format($total_harga, 0, ',', '.'); ?></td>
+            </tr>
+        </tfoot>
+    </table>
+    <?php else: ?>
         <p class="text-center">Keranjang belanja Anda kosong.</p>
     <?php endif; ?>
 </div>
