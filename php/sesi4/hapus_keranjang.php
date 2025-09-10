@@ -1,16 +1,7 @@
 <?php
 session_start();
 // Koneksi ke database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ecommerce";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
+include 'konfigurasi_db.php';
 
 if (isset($_GET['id'])) {
     $product_id_to_remove = $_GET['id'];

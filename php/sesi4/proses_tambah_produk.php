@@ -1,17 +1,6 @@
 <?php
 // Konfigurasi Database
-$host = 'localhost';
-$username = 'root';
-$password = ''; // Ganti dengan password database Anda jika ada
-$database = 'ecommerce';
-
-// Membuat koneksi ke database
-$conn = new mysqli($host, $username, $password, $database);
-
-// Memeriksa koneksi
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
+include 'konfigurasi_db.php';
 
 // Memproses data dari form
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -32,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageFileType = strtolower(pathinfo($_FILES["gambar_produk"]["name"], PATHINFO_EXTENSION));
 
     // Buat nama file baru yang unik
-    $nama_file_gambar =unqid() . '.' . $imageFileType;
+    $nama_file_gambar =uniqid() . '.' . $imageFileType;
     $target_file = $target_dir . $nama_file_gambar;
 
     $uploadOk = 1;

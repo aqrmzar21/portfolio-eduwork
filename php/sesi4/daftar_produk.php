@@ -97,18 +97,7 @@
             <tbody>
                 <?php
                 // Konfigurasi Database
-                $host = 'localhost';
-                $username = 'root';
-                $password = ''; // Ganti dengan password database Anda jika ada
-                $database = 'ecommerce';
-
-                // Membuat koneksi ke database
-                $conn = new mysqli($host, $username, $password, $database);
-
-                // Memeriksa koneksi
-                if ($conn->connect_error) {
-                    die("Koneksi gagal: " . $conn->connect_error);
-                }
+                include 'konfigurasi_db.php';
 
                 // Mengambil data produk dari database
                 $sql = "SELECT * FROM product";
